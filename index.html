@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Royal Feast - Authentic Mozambican Cuisine</title>
+    <meta name="description" content="Experience the best Mozambican food at The Royal Feast. Order online or book a table.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "The Royal Feast",
+        "description": "Authentic Mozambican Cuisine",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Beach Road",
+            "addressLocality": "Maputo",
+            "addressCountry": "Mozambique"
+        },
+        "servesCuisine": "Mozambican",
+        "openingHours": "Mo-Su 08:00-16:00"
+    }
+    </script>
+</head>
+<body>
+    <div class="colorful-background"></div>
+    
+    <header class="header">
+        <h1>The Royal Feast</h1>
+        <p class="subtitle">Authentic Mozambican Cuisine</p>
+        <div class="opening-times">
+            <span>🍽️ Open: 8:00 AM - 4:00 PM</span>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="🔍 Search dishes..." oninput="searchMenu(this.value)">
+    </div>
+
+    <div class="menu-tabs">
+        <button class="menu-tab active" onclick="filterMenu('all')">All Menu</button>
+        <button class="menu-tab" onclick="filterMenu('main')">Main Courses</button>
+        <button class="menu-tab" onclick="filterMenu('side')">Sides</button>
+        <button class="menu-tab" onclick="filterMenu('drinks')">Drinks</button>
+        <button class="menu-tab" onclick="filterMenu('desserts')">Desserts</button>
+        <button class="menu-tab" onclick="filterMenu('pizza')">Pizza</button>
+    </div>
+
+    <div id="menu" class="menu"></div>
+
+    <!-- Reservation Modal -->
+    <div id="reservation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('reservation-modal')">&times;</span>
+            <h2>Book a Table</h2>
+            <form id="reservation-form">
+                <div class="form-group">
+                    <label for="reservation-name">Name:</label>
+                    <input type="text" id="reservation-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-phone">Phone:</label>
+                    <input type="tel" id="reservation-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-date">Date:</label>
+                    <input type="date" id="reservation-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-time">Time:</label>
+                    <input type="time" id="reservation-time" min="08:00" max="16:00" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-guests">Guests:</label>
+                    <input type="number" id="reservation-guests" min="1" max="10" required>
+                </div>
+                <button type="submit" class="submit-btn">Book Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Type Selector -->
+    <div class="order-type-selector">
+        <button class="order-type-btn active" onclick="setOrderType('dine-in')">Dine-In</button>
+        <button class="order-type-btn" onclick="setOrderType('delivery')">Delivery</button>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="reviews-section">
+        <h2>What Our Customers Say</h2>
+        <div class="reviews-container">
+            <div class="review">
+                <div class="review-stars">★★★★★</div>
+                <p>"The best Matapa in town! Authentic flavors that remind me of home."</p>
+                <div class="review-author">- Maria S.</div>
+            </div>
+            <div class="review">
+                <div class="review-stars">★★★★☆</div>
+                <p>"Amazing Frango à Zambeziana. The coconut sauce is to die for!"</p>
+                <div class="review-author">- João M.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart View -->
+    <div id="cart" class="cart">
+        <h3>Your Order <span class="close-cart" onclick="toggleCart()">×</span></h3>
+        <div class="cart-content">
+            <ul id="cart-list"></ul>
+            <div class="cart-summary">
+                <p id="total-price">Total: 0 MZN</p>
+                <p id="delivery-time">Estimated Delivery Time: --</p>
+                <div class="points-earned" id="points-earned">Earn 0 points</div>
+                <div class="cart-actions">
+                    <button onclick="clearCart()">Clear Cart</button>
+                    <button onclick="checkout()" class="checkout-button">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <button id="cart-button" class="action-button cart-button">🛒 <span id="cart-count">0</span></button>
+        <button class="action-button reservation-button" onclick="openModal('reservation-modal')"><i class="fas fa-calendar-alt"></i></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
